@@ -1,0 +1,14 @@
+[golang]
+symbol = "\ue627 "
+
+[lua]
+symbol = "\ue620 "
+
+[nodejs]
+symbol = "\ued0d "
+
+[ruby]
+symbol = "\ue739 "
+
+[zig]
+symbol = "\ue6a9 "
