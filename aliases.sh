@@ -1,0 +1,5 @@
+alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias config="cd ~/.config"
+alias v="nvim ."
+alias site="cd ~/Code/carldaws"
+alias tfp="cd ~/Code/teamfeepay/team-fee-pay-rails"
