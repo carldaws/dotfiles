@@ -3,7 +3,7 @@ return {
 	opts = {
 		default_position = "right",
 		mappings = {
-			{ keymap = "lg", command = "lazygit" },
+			{ keymap = "lg", command = "lazygit",                      position = "center" },
 			{ keymap = "ld", command = "lazydocker" },
 			{ keymap = "rc", command = "rails console" },
 			{ keymap = "db", command = "psql -h localhost -U postgres" },
