@@ -1,4 +1,6 @@
 [tools]
+clang-format = "latest"
+clangd = "latest"
 go = "latest"
 lua = "latest"
 lua-language-server = "latest"
