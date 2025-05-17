@@ -14,9 +14,9 @@ return {
 				client.server_capabilities.completionProvider.triggerCharacters = all_chars
 			end
 			vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
-			vim.keymap.set("n", "gd", require("fzf-lua").lsp_definitions,
+			vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions,
 				{ noremap = true, silent = true, buffer = bufnr })
-			vim.keymap.set("n", "gr", require("fzf-lua").lsp_references,
+			vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references,
 				{ noremap = true, silent = true, buffer = bufnr })
 		end
 
