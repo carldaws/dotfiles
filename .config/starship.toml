@@ -1,6 +1,6 @@
 [bun]
-symbol = "\ue76f "
 style = "bold yellow"
+symbol = "\ue76f "
 
 [golang]
 symbol = "\ue627 "

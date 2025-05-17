@@ -3,7 +3,7 @@ return {
 	config = function()
 		vim.diagnostic.config({ float = { border = "rounded" }, virtual_text = true })
 		local lspconfig = require("lspconfig")
-		local servers = { "lua_ls", "ruby_lsp", "rubocop", "ts_ls", "gopls", "html", "clangd" }
+		local servers = { "lua_ls", "ruby_lsp", "rubocop", "ts_ls", "gopls", "html", "clangd", "taplo" }
 		local on_attach = function(client, bufnr)
 			local all_chars = {}
 			for i = 32, 126 do
