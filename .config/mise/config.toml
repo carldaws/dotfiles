@@ -1,9 +1,14 @@
 [tools]
 bun = "latest"
+clang-format = "latest"
+clangd = "latest"
 go = "latest"
 lua = "latest"
 lua-language-server = "latest"
 ruby = "latest"
+rust = "latest"
+zig = "latest"
+zls = "latest"
 
 [settings]
 
