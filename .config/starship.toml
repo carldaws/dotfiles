@@ -1,11 +1,12 @@
+[bun]
+symbol = "\ue76f "
+style = "bold yellow"
+
 [golang]
 symbol = "\ue627 "
 
 [lua]
 symbol = "\ue620 "
-
-[nodejs]
-symbol = "\ued0d "
 
 [ruby]
 symbol = "\ue739 "

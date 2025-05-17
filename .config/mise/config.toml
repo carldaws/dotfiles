@@ -1,12 +1,9 @@
 [tools]
-clang-format = "latest"
-clangd = "latest"
+bun = "latest"
 go = "latest"
 lua = "latest"
 lua-language-server = "latest"
-node = "latest"
 ruby = "latest"
-zig = "ref:master"
 
 [settings]
 
