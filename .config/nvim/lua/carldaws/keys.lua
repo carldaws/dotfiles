@@ -3,6 +3,7 @@ vim.keymap.set("n", "<leader>f", require("telescope.builtin").find_files, { nore
 vim.keymap.set("n", "<leader>g", require("telescope.builtin").live_grep, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>*", require("telescope.builtin").grep_string, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>h", require("telescope.builtin").highlights, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>i", "<cmd>Inspect<CR>")
 vim.keymap.set("n", "gt", "<cmd>BufferLinePick<CR>")
 vim.keymap.set("n", "<leader>x", "<cmd>bd<CR>")
 vim.keymap.set("n", "<leader>c", '"+y')
