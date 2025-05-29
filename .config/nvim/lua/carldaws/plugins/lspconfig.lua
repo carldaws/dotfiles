@@ -3,7 +3,7 @@ return {
 	config = function()
 		vim.diagnostic.config({ float = { border = "rounded" }, virtual_text = true })
 		local lspconfig = require("lspconfig")
-		local servers = { "lua_ls", "ruby_lsp", "rubocop", "ts_ls", "gopls", "html", "clangd", "taplo" }
+		local servers = { "lua_ls", "ruby_lsp", "rubocop", "ts_ls", "gopls", "html", "clangd" }
 		local on_attach = function(client, bufnr)
 			local all_chars = {}
 			for i = 32, 126 do
@@ -13,7 +13,6 @@ return {
 			if client.server_capabilities.completionProvider then
 				client.server_capabilities.completionProvider.triggerCharacters = all_chars
 			end
-			vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
 			vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions,
 				{ noremap = true, silent = true, buffer = bufnr })
 			vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references,
