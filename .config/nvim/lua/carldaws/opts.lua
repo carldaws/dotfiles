@@ -8,6 +8,6 @@ vim.opt.softtabstop = 4
 vim.opt.ignorecase = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
 vim.opt.wrap = false
 vim.opt.completeopt:append({ "menuone", "noinsert", "popup" })
