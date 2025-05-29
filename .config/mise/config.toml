@@ -15,4 +15,4 @@ zls = "latest"
 idiomatic_version_file_enable_tools = ["ruby"]
 
 [settings.ruby]
-ruby_build_opts = "--enable-yjit"
+ruby_build_opts = "--enable-yjit --with-readline"
