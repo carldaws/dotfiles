@@ -19,7 +19,7 @@ vim.keymap.set("v", "<leader>rt", function()
 		local line_content = vim.fn.getline(i)
 		if line_content:match("%S") and not line_content:match("^%s*end%s*$") then
 			local mark = vim.api.nvim_buf_set_extmark(bufnr, rails_test.ns, i - 1, 0, {
-				virt_text = { { "Running...", "Comment" } },
+				virt_text = { { "Running...", "Function" } },
 				virt_text_pos = "eol",
 			})
 			table.insert(extmarks, { line = i, id = mark })
@@ -41,7 +41,7 @@ vim.keymap.set("v", "<leader>rt", function()
 		local output = table.concat(stdout_data, "") .. table.concat(stderr_data, "")
 		local success = obj.code == 0
 		local result_text = success and "✓ Passed" or "✗ Failed"
-		local hl_group = success and "Type" or "Error"
+		local hl_group = success and "String" or "DiagnosticError"
 
 		vim.schedule(function()
 			for _, mark in ipairs(extmarks) do
