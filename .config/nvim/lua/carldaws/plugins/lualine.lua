@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = function()
 		local simple_theme = {
 			normal = {
