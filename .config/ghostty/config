@@ -1,3 +1,6 @@
-theme = Nord
+background-image = background.jpg
+theme = tokyonight_moon
 font-family = "Lilex Nerd Font"
 macos-icon = holographic
+background-image-opacity = 0.15
+background-image-fit = cover
