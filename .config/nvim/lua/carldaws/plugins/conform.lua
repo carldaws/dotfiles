@@ -2,10 +2,13 @@ return {
 	"stevearc/conform.nvim",
 	opts = {
 		formatters_by_ft = {
-			c = { "clang-format" },
-			ruby = { "rubocop" },
+			css = { "prettier" },
+			html = { "prettier" },
+			markdown = { "prettier" },
 			javascript = { "prettier" },
-			lua = { "lua-language-server" },
+			lua = { "stylua" },
+			ruby = { "rubocop" },
+			zig = { "zigfmt" }
 		},
 		format_after_save = {
 			lsp_format = "fallback"
