@@ -1,39 +1,13 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	opts = function()
-		local simple_theme = {
-			normal = {
-				a = { fg = nil, bg = 1, gui = "bold" },
-				b = { fg = nil, bg = nil },
-				c = { fg = nil, bg = nil },
-			},
-			insert = {
-				a = { fg = nil, bg = 1, gui = "bold" },
-				b = { fg = nil, bg = nil },
-				c = { fg = nil, bg = nil },
-			},
-			visual = {
-				a = { fg = nil, bg = 1, gui = "bold" },
-				b = { fg = nil, bg = nil },
-				c = { fg = nil, bg = nil },
-			},
-			replace = {
-				a = { fg = nil, bg = 1, gui = "bold" },
-				b = { fg = nil, bg = nil },
-				c = { fg = nil, bg = nil },
-			},
-			inactive = {
-				a = { fg = nil, bg = 1, gui = "bold" },
-				b = { fg = nil, bg = nil },
-				c = { fg = nil, bg = nil },
-			},
-		}
-
-		return {
+	config = function()
+		require("lualine").setup({
 			options = {
-				theme = simple_theme
+				theme = "tokyonight",
+				component_separators = '',
+				section_separators = { left = '', right = '' }
 			}
-		}
+		})
 	end
 }
