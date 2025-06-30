@@ -6,7 +6,7 @@ ruby = "latest"
 rust = "latest"
 stylua = "latest"
 zig = "0.14"
-zls = "latest"
+zls = "0.14"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby"]
