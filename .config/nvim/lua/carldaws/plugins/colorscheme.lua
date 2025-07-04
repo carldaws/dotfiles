@@ -7,5 +7,5 @@ return {
 			transparent = true,
 		})
 		vim.cmd.colorscheme("tokyonight-moon")
-	end
+	end,
 }
