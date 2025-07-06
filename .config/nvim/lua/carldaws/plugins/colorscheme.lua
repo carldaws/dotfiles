@@ -1,11 +1,11 @@
 return {
-	"folke/tokyonight.nvim",
+	"gbprod/nord.nvim",
 	priority = 1000,
 	lazy = false,
 	config = function()
-		require("tokyonight").setup({
+		require("nord").setup({
 			transparent = true,
 		})
-		vim.cmd.colorscheme("tokyonight-moon")
+		vim.cmd.colorscheme("nord")
 	end,
 }
