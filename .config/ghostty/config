@@ -1,5 +1,4 @@
 background-image = background.png
 background-image-opacity = 0.20
 background-image-fit = cover
-font-family = "Lilex Nerd Font"
 theme = Nord
