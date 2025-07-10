@@ -14,3 +14,17 @@ vim.keymap.set("v", "<leader>c", '"+y')
 vim.keymap.set("n", "<leader>v", '"+p')
 vim.keymap.set("v", "<leader>v", '"+p')
 vim.keymap.set("n", "<leader>e", "<cmd>let @+ = expand('%')<CR>")
+vim.keymap.set("v", "<leader>e", function()
+	local start_line = vim.fn.line("v")
+	local end_line = vim.fn.line(".")
+	if start_line > end_line then
+		start_line, end_line = end_line, start_line
+	end
+	local file = vim.fn.expand("%")
+	local range = start_line == end_line and string.format("%s:%d", file, start_line)
+		or string.format("%s:%d-%d", file, start_line, end_line)
+	vim.fn.setreg("+", range)
+	vim.notify("Copied: " .. range)
+end, { desc = "Copy file:line-range" })
+vim.keymap.set("x", "J", ":move '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set("x", "K", ":move '<-2<CR>gv=gv", { silent = true })
