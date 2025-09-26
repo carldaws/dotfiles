@@ -6,6 +6,7 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.ignorecase = true
+vim.opt.expandtab = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.wrap = false

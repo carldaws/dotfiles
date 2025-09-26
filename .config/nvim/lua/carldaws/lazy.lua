@@ -10,9 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup(
-	{
-		spec = { import = "carldaws.plugins" },
-		checker = { enabled = true },
-	}
-)
+require("lazy").setup({
+	spec = { import = "carldaws.plugins" },
+	checker = { enabled = true },
+})
