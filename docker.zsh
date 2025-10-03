@@ -5,6 +5,7 @@ docker run -d \
   -e POSTGRES_HOST_AUTH_METHOD=trust \
   -p "127.0.0.1:5432:5432" \
   -v postgres17-data:/var/lib/postgresql/data \
+  --shm-size=2g \
   --restart unless-stopped \
   postgres:17
 
