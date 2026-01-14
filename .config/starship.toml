@@ -7,10 +7,10 @@ $directory\
 $git_branch\
 $git_status\
 [](fg:#434c5e bg:#3b4252)\
-$ruby\
-$nodejs\
-$zig\
+$golang\
 $lua\
+$nodejs\
+$ruby\
 [](fg:#3b4252 bg:#2e3440)\
 $time\
 [ ](fg:#2e3440)\
@@ -38,8 +38,13 @@ format = '[[ $symbol $branch ](fg:#a3be8c bg:#434c5e)]($style)'
 style = "bg:#434c5e"
 format = '[[($all_status$ahead_behind )](fg:#a3be8c bg:#434c5e)]($style)'
 
-[ruby]
-symbol = ""
+[golang]
+symbol = ""
+style = "bg:#3b4252"
+format = '[[ $symbol ($version) ](fg:#88c0d0 bg:#3b4252)]($style)'
+
+[lua]
+symbol = ""
 style = "bg:#3b4252"
 format = '[[ $symbol ($version) ](fg:#88c0d0 bg:#3b4252)]($style)'
 
@@ -48,15 +53,10 @@ symbol = ""
 style = "bg:#3b4252"
 format = '[[ $symbol ($version) ](fg:#88c0d0 bg:#3b4252)]($style)'
 
-[zig]
-symbol = ""
+[ruby]
+symbol = ""
 style = "bg:#3b4252"
 format = '[[ $symbol ($version) ](fg:#88c0d0 bg:#3b4252)]($style)'
-
-[lua]
-symbol = ""
-style = "bg:#3b4252"
-format = '[[ $symbol ($version) ](fg:#4c566a bg:#3b4252)]($style)'
 
 [time]
 disabled = false
