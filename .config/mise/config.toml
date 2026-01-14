@@ -1,16 +1,14 @@
+[env]
+EDITOR = "nvim"
+
 [tools]
 go = "latest"
 lua = "latest"
 lua-language-server = "latest"
+ninja = "latest"
 node = "latest"
 ruby = "latest"
-rust = "latest"
 stylua = "latest"
-zig = "0.14"
-zls = "0.14"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby"]
-
-[settings.ruby]
-ruby_build_opts = "--enable-yjit --with-readline"
