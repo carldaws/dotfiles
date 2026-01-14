@@ -6,6 +6,7 @@ brew install git
 
 git config --global user.name "Carl Dawson"
 git config --global user.email "carldawson@hey.com"
+git config --global pull.rebase true
 git config --global core.excludesfile "$HOME/.gitignore"
 git config --global init.defaultBranch main
 
