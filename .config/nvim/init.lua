@@ -110,8 +110,6 @@ vim.keymap.set("n", "<leader>?", function()
   vim.lsp.buf.definition({ on_list = on_list })
 end, { noremap = true })
 
-local install_cache = {}
-
 vim.lsp.config["luals"] = {
   cmd = { "lua-language-server" },
   filetypes = { "lua" },
@@ -125,109 +123,73 @@ vim.lsp.config["luals"] = {
 }
 vim.lsp.enable("luals")
 
-local function start_bundled_lsp(name, check_cmd, config)
-  local key = vim.fn.getcwd() .. ":" .. name
-  if install_cache[key] == nil then
-    install_cache[key] = "checking"
-    vim.system(check_cmd, {}, function(r)
-      install_cache[key] = r.code == 0
-      if r.code == 0 then
-        vim.schedule(function() vim.lsp.start(config) end)
-      end
-    end)
-  elseif install_cache[key] == true then
-    vim.lsp.start(config)
-  end
-end
+vim.lsp.config["ruby-lsp"] = {
+  cmd = { "bundle", "exec", "ruby-lsp" },
+  filetypes = { "ruby", "eruby" },
+  root_markers = { "Gemfile", ".git" },
+}
+vim.lsp.enable("ruby-lsp")
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "ruby", "eruby" },
-  callback = function(ev)
-    local root = vim.fs.root(ev.buf, { "Gemfile", ".git" })
-    start_bundled_lsp("ruby-lsp", { "bundle", "exec", "ruby-lsp", "--version" },
-      { name = "ruby-lsp", cmd = { "bundle", "exec", "ruby-lsp" }, root_dir = root })
-    start_bundled_lsp("rubocop", { "bundle", "exec", "rubocop", "--version" },
-      { name = "rubocop", cmd = { "bundle", "exec", "rubocop", "--lsp" }, root_dir = root })
-  end
-})
+vim.lsp.config["rubocop"] = {
+  cmd = { "bundle", "exec", "rubocop", "--lsp" },
+  filetypes = { "ruby" },
+  root_markers = { "Gemfile", ".git" },
+}
+vim.lsp.enable("rubocop")
 
-local js_filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
-  "typescript.tsx" }
+vim.lsp.config["ts_ls"] = {
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  root_markers = { "package.json", ".git" },
+}
+vim.lsp.enable("ts_ls")
 
-local function setup_prettier(buf, filepath)
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = buf,
-    callback = function()
-      local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-      local result = vim.fn.systemlist({ "prettier", "--stdin-filepath", filepath }, table.concat(lines, "\n"))
-      if vim.v.shell_error == 0 then
-        vim.api.nvim_buf_set_lines(buf, 0, -1, false, result)
-      end
-    end
-  })
-end
-
-local function ensure_global(key, executable, install_cmd)
-  if install_cache[key] then return end
-  install_cache[key] = true
-  if vim.fn.executable(executable) == 0 then
-    vim.system(install_cmd)
-  end
-end
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = js_filetypes,
-  callback = function(ev)
-    ensure_global("ts_ls", "typescript-language-server", { "npm", "i", "-g", "typescript-language-server" })
-    ensure_global("prettier", "prettier", { "npm", "i", "-g", "prettier" })
-    vim.lsp.start({
-      name = "ts_ls",
-      cmd = { "typescript-language-server", "--stdio" },
-      root_dir = vim.fs.root(ev.buf, { ".git" }),
-    })
-    setup_prettier(ev.buf, vim.api.nvim_buf_get_name(ev.buf))
-  end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "astro",
-  callback = function(ev)
-    ensure_global("astro", "astro-ls", { "npm", "i", "-g", "@astrojs/language-server" })
-    ensure_global("prettier", "prettier", { "npm", "i", "-g", "prettier" })
-    vim.system({ "npm", "i", "--save-dev", "prettier-plugin-astro" })
-    local root = vim.fs.root(ev.buf, { ".git" })
-    vim.lsp.start({
-      name = "astro_ls",
-      cmd = { "astro-ls", "--stdio" },
-      root_dir = root,
-      init_options = { typescript = { tsdk = root .. "/node_modules/typescript/lib" } }
-    })
-    setup_prettier(ev.buf, vim.api.nvim_buf_get_name(ev.buf))
-  end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "go",
-  callback = function(ev)
-    if vim.fn.executable("gopls") == 1 then
-      vim.lsp.start({
-        name = "gopls",
-        cmd = { "gopls" },
-        root_dir = vim.fs.root(ev.buf, { ".git" }),
-      })
-    end
-  end
-})
-
-vim.diagnostic.config({
-  virtual_text = {
-    source = "if_many",
+vim.lsp.config["astro_ls"] = {
+  cmd = { "astro-ls", "--stdio" },
+  filetypes = { "astro" },
+  root_markers = { "package.json", "tsconfig.json", ".git" },
+  init_options = {
+    typescript = {},
   },
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
+  before_init = function(_, config)
+    if not config.init_options.typescript.tsdk then
+      local found = vim.fs.find("node_modules", { path = config.root_dir, upward = true, limit = math.huge })
+      for _, node_modules in ipairs(found) do
+        local tsdk = node_modules .. "/typescript/lib"
+        if vim.fn.isdirectory(tsdk) == 1 then
+          config.init_options.typescript.tsdk = tsdk
+          return
+        end
+      end
+    end
+  end,
+}
+vim.lsp.enable("astro_ls")
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "astro" },
+  callback = function(ev)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = ev.buf,
+      callback = function()
+        local buf = ev.buf
+        local filepath = vim.api.nvim_buf_get_name(buf)
+        local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+        local result = vim.fn.systemlist({ "prettier", "--stdin-filepath", filepath }, table.concat(lines, "\n"))
+        if vim.v.shell_error == 0 then
+          vim.api.nvim_buf_set_lines(buf, 0, -1, false, result)
+        end
+      end
+    })
+  end
 })
+
+vim.lsp.config["gopls"] = {
+  cmd = { "gopls" },
+  filetypes = { "go" },
+  root_markers = { ".git" },
+}
+vim.lsp.enable("gopls")
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
@@ -243,4 +205,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
   end
+})
+
+vim.diagnostic.config({
+  virtual_text = {
+    source = "if_many",
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
 })
