@@ -1,6 +1,7 @@
 cask "1password"
 cask "1password-cli"
-cask "docker"
+cask "claude-code"
+cask "docker-desktop"
 cask "ghostty@tip"
 cask "google-chrome"
 brew "mise"
