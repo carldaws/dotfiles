@@ -12,7 +12,10 @@ git config --global init.defaultBranch main
 
 git clone https://github.com/carldaws/dotfiles.git $HOME/dotfiles
 
-brew bundle
-cd $HOME/dotfiles && stow .
+cd $HOME/dotfiles
+stow .
+git remote set-url origin git@github.com:carldaws/dotfiles
 
+cd $HOME
+brew bundle
 mise install
