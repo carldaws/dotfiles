@@ -1,3 +1,3 @@
-alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias dotfiles="git -C ~/dotfiles"
 alias config="cd ~/.config"
 alias v="nvim ."
