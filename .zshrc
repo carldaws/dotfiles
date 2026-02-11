@@ -1,3 +1,5 @@
+eval "$(brew     shellenv)"
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
 source "$HOME/aliases.zsh"
+source "$HOME/helpers.zsh"
