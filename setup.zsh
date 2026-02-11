@@ -13,11 +13,15 @@ git config --global init.defaultBranch main
 git clone https://github.com/carldaws/dotfiles.git $HOME/dotfiles
 
 cd $HOME/dotfiles
+git remote set-url origin git@github.com:carldaws/dotfiles.git
+brew bundle
 stow .
-git remote set-url origin git@github.com:carldaws/dotfiles
 
 cd $HOME
-brew bundle
+source ~/.zshrc
 mise install
+
+db createuser -s postgres
+db psql -c "alter user postgres with password 'postgres'"
 
 source ~/neovim.zsh
