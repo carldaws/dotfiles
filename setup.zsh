@@ -19,3 +19,5 @@ git remote set-url origin git@github.com:carldaws/dotfiles
 cd $HOME
 brew bundle
 mise install
+
+source ~/neovim.zsh
