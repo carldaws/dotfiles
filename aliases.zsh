@@ -1,3 +1,2 @@
-alias dotfiles="git -C ~/dotfiles"
-alias config="cd ~/.config"
+alias dotfiles="cd ~/dotfiles"
 alias v="nvim ."
