@@ -71,9 +71,9 @@ surface.setup({
 })
 
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
-vim.keymap.set("n", "<leader>f", "<cmd>Pick files<CR>")
-vim.keymap.set("n", "<leader>g", "<cmd>Pick grep<CR>")
-vim.keymap.set("n", "<leader>*", "<cmd>Pick grep pattern='<cword>'<CR>")
+vim.keymap.set("n", "<leader>f", "<cmd>Pick files tool='git'<CR>")
+vim.keymap.set("n", "<leader>g", "<cmd>Pick grep tool='git'<CR>")
+vim.keymap.set("n", "<leader>*", "<cmd>Pick grep tool='git' pattern='<cword>'<CR>")
 vim.keymap.set("n", "<leader>b", "<cmd>Pick buffers<CR>")
 vim.keymap.set("n", "<leader>m", function()
   pick.start({ source = { items = vim.fn.systemlist("git ls-files --modified --others --exclude-standard") } })
