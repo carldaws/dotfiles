@@ -65,7 +65,8 @@ surface.setup({
     { keymap = "<leader>lg", command = "lazygit",                      position = "center" },
     { keymap = "<leader>db", command = "psql -h localhost -U postgres" },
     { keymap = "<leader>rc", command = "rails console" },
-    { keymap = "<leader>ai", command = "claude" },
+    { keymap = "<leader>ai", command = "opencode" },
+    { keymap = "<leader>cc", command = "claude" },
   },
 })
 
