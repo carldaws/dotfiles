@@ -1,23 +1,23 @@
 format = """
-[░▒▓](#d8dee9)\
-[  ](bg:#d8dee9 fg:#2e3440)\
-[](bg:#4c566a fg:#d8dee9)\
+[░▒▓](white)\
+[  ](bg:white fg:black)\
+[](bg:bright-black fg:white)\
 $directory\
-[](fg:#4c566a bg:#434c5e)\
+[](fg:bright-black bg:black)\
 $git_branch\
 $git_status\
-[](fg:#434c5e bg:#3b4252)\
+[](fg:black bg:black)\
 $golang\
 $lua\
 $nodejs\
 $ruby\
-[](fg:#3b4252 bg:#2e3440)\
+[](fg:black bg:black)\
 $time\
-[ ](fg:#2e3440)\
+[ ](fg:black)\
 \n$character"""
 
 [directory]
-style = "fg:#e3e5e5 bg:#4c566a"
+style = "fg:bright-white bg:bright-black"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -31,35 +31,35 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#434c5e"
-format = '[[ $symbol $branch ](fg:#a3be8c bg:#434c5e)]($style)'
+style = "bg:black"
+format = '[[ $symbol $branch ](fg:green bg:black)]($style)'
 
 [git_status]
-style = "bg:#434c5e"
-format = '[[($all_status$ahead_behind )](fg:#a3be8c bg:#434c5e)]($style)'
+style = "bg:black"
+format = '[[($all_status$ahead_behind )](fg:green bg:black)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:#3b4252"
-format = '[[ $symbol ($version) ](fg:#88c0d0 bg:#3b4252)]($style)'
+style = "bg:black"
+format = '[[ $symbol ($version) ](fg:cyan bg:black)]($style)'
 
 [lua]
 symbol = ""
-style = "bg:#3b4252"
-format = '[[ $symbol ($version) ](fg:#88c0d0 bg:#3b4252)]($style)'
+style = "bg:black"
+format = '[[ $symbol ($version) ](fg:cyan bg:black)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#3b4252"
-format = '[[ $symbol ($version) ](fg:#88c0d0 bg:#3b4252)]($style)'
+style = "bg:black"
+format = '[[ $symbol ($version) ](fg:cyan bg:black)]($style)'
 
 [ruby]
 symbol = ""
-style = "bg:#3b4252"
-format = '[[ $symbol ($version) ](fg:#88c0d0 bg:#3b4252)]($style)'
+style = "bg:black"
+format = '[[ $symbol ($version) ](fg:cyan bg:black)]($style)'
 
 [time]
 disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#2e3440"
-format = '[[  $time ](fg:#b48ead bg:#2e3440)]($style)'
+time_format = "%R"
+style = "bg:bright-black"
+format = '[[  $time ](fg:purple bg:black)]($style)'
