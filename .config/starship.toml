@@ -1,6 +1,6 @@
 format = """
 [░▒▓](white)\
-[  ](bg:white fg:black)\
+[  ](bg:white fg:black)\
 [](bg:bright-black fg:white)\
 $directory\
 [](fg:bright-black bg:black)\
