@@ -1,10 +1,3 @@
 [env]
 EDITOR = "nvim"
-
-[tools]
-go = "latest"
-lua = "latest"
-lua-language-server = "latest"
-node = "latest"
-ruby = "latest"
-stylua = "latest"
+RIPGREP_CONFIG_PATH = "{{ env.HOME }}/.config/ripgrep/config"
