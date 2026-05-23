@@ -3,3 +3,4 @@ background-image-opacity = 0.20
 background-image-fit = cover
 theme = Nord
 keybind = shift+enter=text:\n
+font-family = FiraCode Nerd Font
