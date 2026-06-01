@@ -1,3 +1,29 @@
 [env]
 EDITOR = "nvim"
 RIPGREP_CONFIG_PATH = "{{ env.HOME }}/.config/ripgrep/config"
+
+[tasks.claude]
+dir = "{{cwd}}"
+description = "Open Claude Code"
+run = "claude"
+alias = "cc"
+
+[tasks.db]
+description = "Open psql"
+run = "psql -U postgres"
+alias = "db"
+
+[tasks.lazygit]
+dir = "{{cwd}}"
+description = "Open Lazygit"
+run = "lazygit"
+alias = "lg"
+
+[tasks.terminal]
+dir = "{{cwd}}"
+description = "Open a new terminal"
+run = "zsh"
+alias = "tt"
+
+[tools]
+tree-sitter = "latest"
