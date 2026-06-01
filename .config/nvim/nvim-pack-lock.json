@@ -1,27 +1,35 @@
 {
   "plugins": {
     "lualine.nvim": {
-      "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mini.icons": {
-      "rev": "efc85e42262cd0c9e1fdbf806c25cb0be6de115c",
+      "rev": "520995f1d75da0e4cc901ee95080b1ff2bc46b94",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "mini.pick": {
-      "rev": "aa242acc17683515d8f749552aebe061bced9132",
+      "rev": "4522d9ab65224675df2cf1ede8c12f0410aae2be",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
+    "miser.nvim": {
+      "rev": "687bc018856559681a7c5fc6c7d1162dfa60c9ab",
+      "src": "https://github.com/carldaws/miser.nvim"
+    },
     "nord.nvim": {
-      "rev": "07647ad23e5b7fc1599a841dcd8f173b9aeb0419",
+      "rev": "87394d4fc35c901bbe38326a78d31ab1ead826b6",
       "src": "https://github.com/gbprod/nord.nvim"
     },
+    "nvim-treesitter": {
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
     "oil.nvim": {
-      "rev": "6b59a6cf623fa2245c7454ddb458df5bdb6615d3",
+      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "surface.nvim": {
-      "rev": "48bf3a8ea29710ae9da18cdcbd4a527c3a0abf0a",
+      "rev": "4b3d4b76806b8365f147142da627a9b96639f711",
       "src": "https://github.com/carldaws/surface.nvim"
     }
   }
