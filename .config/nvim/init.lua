@@ -112,6 +112,7 @@ surface.setup({})
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
+vim.keymap.set("n", "<Tab>", "<C-w>")
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
 vim.keymap.set("n", "<leader>f", function()
 	pick.builtin.files({}, { source = { name = "Files" } })
