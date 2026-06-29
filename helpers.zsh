@@ -1,3 +1,1 @@
-db () {
-  "${HOMEBREW_PREFIX}/opt/postgresql@18/bin/$@"
-}
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
