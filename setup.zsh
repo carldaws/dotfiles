@@ -1,9 +1,5 @@
 xcode-select --install
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-brew install git
-
 git config --global user.name "Carl Dawson"
 git config --global user.email "carldawson@hey.com"
 git config --global pull.rebase true
@@ -14,14 +10,19 @@ git clone https://github.com/carldaws/dotfiles.git $HOME/dotfiles
 
 cd $HOME/dotfiles
 git remote set-url origin git@github.com:carldaws/dotfiles.git
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+source ~/.zshrc
 brew bundle
+
 stow .
 
 cd $HOME
 source ~/.zshrc
 mise install
 
-db createuser -s postgres
-db psql -c "alter user postgres with password 'postgres'"
+brew services start postgresql@18
+createuser -s postgres
+psql -d postgres -c "alter user postgres with password 'postgres'"
 
 source ~/neovim.zsh
