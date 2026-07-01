@@ -26,6 +26,7 @@ run = "zsh"
 alias = "tt"
 
 [tools]
+go = "latest"
 node = "latest"
 ruby = "latest"
 tree-sitter = "latest"
