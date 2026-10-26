@@ -1,5 +1,4 @@
 format = """
-[░▒▓](white)\
 [  ](bg:white fg:black)\
 [](bg:bright-black fg:white)\
 $directory\
