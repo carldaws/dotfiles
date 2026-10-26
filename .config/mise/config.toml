@@ -8,6 +8,12 @@ description = "Open Claude Code"
 run = "claude"
 alias = "cc"
 
+[tasks.opencode]
+dir = "{{cwd}}"
+description = "Run Opencode"
+run = "opencode"
+alias = "oc"
+
 [tasks.db]
 description = "Open psql"
 run = "psql -U postgres"
