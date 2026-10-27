@@ -36,3 +36,17 @@ For Postgres, run once:
 brew services start postgresql@18
 createuser -s postgres
 ```
+
+For Tailscale, run once and sign in:
+
+```sh
+sudo --preserve-env=HOME "$(command -v brew)" services start tailscale
+sudo "$(command -v tailscale)" up --operator=$USER --hostname=carls-vm
+```
+
+Before deleting the VM, sign it out of Tailscale so it leaves the device list:
+
+```sh
+limactl shell --shell /usr/bin/zsh vm tailscale logout
+limactl delete vm
+```
