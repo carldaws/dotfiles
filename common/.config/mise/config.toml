@@ -1,0 +1,15 @@
+[env]
+EDITOR = "nvim"
+RIPGREP_CONFIG_PATH = "{{ env.HOME }}/.config/ripgrep/config"
+
+[tasks.lazygit]
+dir = "{{cwd}}"
+description = "Open Lazygit"
+run = "lazygit"
+alias = "lg"
+
+[tasks.terminal]
+dir = "{{cwd}}"
+description = "Open a new terminal"
+run = "zsh"
+alias = "tt"

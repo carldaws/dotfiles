@@ -1,0 +1,65 @@
+base: template:_images/debian-13
+
+vmType: vz
+cpus: 6
+memory: 12GiB
+disk: 100GiB
+mounts: []
+containerd:
+  system: false
+  user: false
+
+portForwards:
+- guestSocket: "/run/user/{{.UID}}/keyhole-work.sock"
+  hostSocket: "{{.Home}}/.keyhole/work.sock"
+  reverse: true
+- guestSocket: "/run/user/{{.UID}}/keyhole-personal.sock"
+  hostSocket: "{{.Home}}/.keyhole/personal.sock"
+  reverse: true
+- guestSocket: "/run/user/{{.UID}}/ssh-agent.sock"
+  hostSocket: "{{.Home}}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  reverse: true
+
+provision:
+- mode: system
+  script: |
+    #!/bin/bash
+    set -eux -o pipefail
+    command -v zsh && exit 0
+
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update
+    apt-get install -y build-essential procps curl file git zsh
+    sed -i 's/^# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+    locale-gen
+    echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>/etc/zsh/zshenv
+    chsh -s /usr/bin/zsh "{{.User}}"
+    loginctl enable-linger "{{.User}}"
+
+- mode: user
+  script: |
+    #!/bin/bash
+    set -eux -o pipefail
+    [ -d $HOME/dotfiles ] && exit 0
+
+    git config --global user.name "Carl Dawson"
+    git config --global user.email "carldawson@hey.com"
+    git config --global pull.rebase true
+    git config --global core.excludesfile "$HOME/.gitignore_global"
+    git config --global init.defaultBranch main
+
+    install -d -m 700 $HOME/.ssh
+    printf 'Host *\n  IdentityAgent /run/user/%%i/ssh-agent.sock\n' >$HOME/.ssh/config
+    echo 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl' >$HOME/.ssh/known_hosts
+
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+    brew install stow
+
+    git clone https://github.com/carldaws/dotfiles.git $HOME/dotfiles
+
+    cd $HOME/dotfiles
+    git remote set-url origin git@github.com:carldaws/dotfiles.git
+    mkdir -p $HOME/.config/zsh
+    stow common vm
+    brew bundle --global

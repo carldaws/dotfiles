@@ -12,17 +12,10 @@ cd $HOME/dotfiles
 git remote set-url origin git@github.com:carldaws/dotfiles.git
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-source ~/.zshrc
-brew bundle
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
-stow .
+mkdir -p $HOME/.config/zsh
+stow common mac
+brew bundle --global
 
-cd $HOME
-source ~/.zshrc
-mise install
-
-brew services start postgresql@18
-createuser -s postgres
-psql -d postgres -c "alter user postgres with password 'postgres'"
-
-source ~/neovim.zsh
+exec zsh
