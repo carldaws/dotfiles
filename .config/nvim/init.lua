@@ -16,12 +16,17 @@ vim.opt.laststatus = 3
 vim.opt.cmdheight = 0
 vim.opt.winborder = "rounded"
 vim.opt.autoread = true
+vim.opt.foldmethod = "syntax"
+vim.opt.foldlevelstart = 99
+vim.opt.foldtext = ""
+vim.opt.foldcolumn = "1"
+vim.opt.fillchars = { fold = " ", foldopen = " ", foldsep = " ", foldclose = "›", foldinner = " " }
+vim.opt.statuscolumn = "%s%l %C "
 
 vim.pack.add({
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.icons" },
 	{ src = "https://github.com/nvim-mini/mini.pick" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/carldaws/miser.nvim" },
 	{ src = "https://github.com/gbprod/nord.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -35,7 +40,6 @@ local nord = require("nord")
 local oil = require("oil")
 local pick = require("mini.pick")
 local surface = require("surface")
-local treesitter = require("nvim-treesitter")
 
 icons.setup()
 
@@ -47,10 +51,38 @@ lualine.setup({
 })
 
 miser.setup({
-	task_runner = function(cmd)
-		surface.open(cmd, "right")
-	end,
+	registry = {
+		["npm:@astrojs/language-server"] = {
+			config = {
+				init_options = {
+					typescript = {
+						tsdk = "node_modules/typescript/lib",
+					},
+				},
+			},
+		},
+		["gem:ruby-lsp"] = {
+			config = {
+				init_options = {
+					addonSettings = {
+						["Ruby LSP Rails"] = {
+							enablePendingMigrationsPrompt = false,
+						},
+					},
+				},
+			},
+		},
+	},
 	task_keymaps = { enabled = true, prefix = "<leader>" },
+	task_runner = function(cmd)
+		local position
+		if cmd:match("lazygit") then
+			position = "center"
+		else
+			position = "right"
+		end
+		surface.open(cmd, position)
+	end,
 })
 
 nord.setup({
@@ -58,6 +90,8 @@ nord.setup({
 	on_highlights = function(highlights, colors)
 		highlights.FloatBorder = { fg = colors.aurora.purple }
 		highlights.NormalFloat = { bg = "NONE" }
+		highlights.Folded = { bg = "NONE" }
+		highlights.FoldColumn = { link = "LineNr" }
 	end,
 })
 vim.cmd.colorscheme("nord")
@@ -75,45 +109,13 @@ pick.setup({
 	},
 })
 
-treesitter.setup()
-treesitter.install({
-	"ruby",
-	"embedded_template",
-	"go",
-	"gomod",
-	"typescript",
-	"tsx",
-	"javascript",
-	"html",
-	"css",
-	"scss",
-	"elixir",
-	"heex",
-	"lua",
-	"markdown",
-	"markdown_inline",
-	"json",
-	"yaml",
-	"toml",
-})
-
-vim.treesitter.language.register("embedded_template", "eruby")
-vim.treesitter.language.register("javascript", "javascriptreact")
-
-vim.api.nvim_create_autocmd("FileType", {
-	callback = function(args)
-		if vim.treesitter.language.get_lang(args.match) then
-			pcall(vim.treesitter.start)
-		end
-	end,
-})
-
 surface.setup({})
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
 vim.keymap.set("n", "<Tab>", "<C-w>")
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
+vim.keymap.set("n", "<BS>", "za")
 vim.keymap.set("n", "<leader>f", function()
 	pick.builtin.files({}, { source = { name = "Files" } })
 end)
