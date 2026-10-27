@@ -1,3 +1,4 @@
+cask "claude-code@latest"
 brew "gh"
 brew "git"
 brew "jq"
