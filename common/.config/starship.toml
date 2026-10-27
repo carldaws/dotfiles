@@ -1,5 +1,5 @@
 format = """
-[  ](bg:white fg:black)\
+$os\
 [](bg:bright-black fg:white)\
 $directory\
 [](fg:bright-black bg:black)\
@@ -14,6 +14,15 @@ $ruby\
 $time\
 [ ](fg:black)\
 \n$character"""
+
+[os]
+disabled = false
+style = "bg:white fg:black"
+format = "[ $symbol ]($style)"
+
+[os.symbols]
+Macos = "󰀵"
+Debian = ""
 
 [directory]
 style = "fg:bright-white bg:bright-black"
