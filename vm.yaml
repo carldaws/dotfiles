@@ -4,7 +4,10 @@ vmType: vz
 cpus: 6
 memory: 12GiB
 disk: 100GiB
-mounts: []
+mounts:
+- location: "{{.Home}}/Airlock"
+  mountPoint: "{{.Home}}/Airlock"
+  writable: true
 containerd:
   system: false
   user: false
