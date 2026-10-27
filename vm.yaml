@@ -52,7 +52,7 @@ provision:
     git config --global init.defaultBranch main
 
     install -d -m 700 $HOME/.ssh
-    printf 'Host *\n  IdentityAgent /run/user/%%i/ssh-agent.sock\n' >$HOME/.ssh/config
+    printf 'Host *\n  IdentityAgent /run/user/{{.UID}}/ssh-agent.sock\n' >$HOME/.ssh/config
     echo 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl' >$HOME/.ssh/known_hosts
 
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
