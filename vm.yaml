@@ -63,6 +63,6 @@ provision:
 
     cd $HOME/dotfiles
     git remote set-url origin git@github.com:carldaws/dotfiles.git
-    mkdir -p $HOME/.config/zsh
+    mkdir -p $HOME/.config/zsh $HOME/.claude
     stow common vm
     brew bundle --global

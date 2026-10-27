@@ -1,5 +1,10 @@
 # AGENTS.md
 
+## Environment
+- You are running in a Debian VM on a macOS host
+- Install system tools with Homebrew and project runtimes with mise
+- Secrets from 1Password come to the VM via Keyhole sockets in `/run/user/<uid>`
+
 ## Rules
 
 - We don't ship junk (or slop).
