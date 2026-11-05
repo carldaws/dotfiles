@@ -28,17 +28,17 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.icons" },
 	{ src = "https://github.com/nvim-mini/mini.pick" },
 	{ src = "https://github.com/carldaws/miser.nvim" },
-	{ src = "https://github.com/gbprod/nord.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/carldaws/pluto.nvim" },
 	{ src = "https://github.com/carldaws/surface.nvim" },
 })
 
 local icons = require("mini.icons")
 local lualine = require("lualine")
 local miser = require("miser")
-local nord = require("nord")
 local oil = require("oil")
 local pick = require("mini.pick")
+local pluto = require("pluto")
 local surface = require("surface")
 
 icons.setup()
@@ -85,17 +85,6 @@ miser.setup({
 	end,
 })
 
-nord.setup({
-	transparent = true,
-	on_highlights = function(highlights, colors)
-		highlights.FloatBorder = { fg = colors.aurora.purple }
-		highlights.NormalFloat = { bg = "NONE" }
-		highlights.Folded = { bg = "NONE" }
-		highlights.FoldColumn = { link = "LineNr" }
-	end,
-})
-vim.cmd.colorscheme("nord")
-
 oil.setup({
 	default_file_explorer = true,
 	view_options = { show_hidden = true },
@@ -108,6 +97,9 @@ pick.setup({
 		end,
 	},
 })
+
+pluto.setup({ transparent = true })
+vim.cmd.colorscheme("pluto")
 
 surface.setup({})
 

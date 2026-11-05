@@ -5,11 +5,11 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mini.icons": {
-      "rev": "9e4c1645ce2b78afd6191b6be2c38bc0f998dd48",
+      "rev": "eab3e692d796d78ea6ffc978d8a380ff26fcf4e3",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "mini.pick": {
-      "rev": "9368112b7cafb61d837bed55fc6f40e55df53fa0",
+      "rev": "32ead2c8016a68487de87f23d604135843b0196d",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
     "miser.nvim": {
@@ -24,8 +24,12 @@
       "rev": "d3733d933833a0e59b813ecec99341527adf0c28",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "pluto.nvim": {
+      "rev": "3586ac69f1af17ecbd7a868c131bc469af1d2bbe",
+      "src": "https://github.com/carldaws/pluto.nvim"
+    },
     "surface.nvim": {
-      "rev": "5fa085a25cc55db8c848712128c7086363b9f329",
+      "rev": "53ed616b52a187f292850160b3139ba4b1e9ff17",
       "src": "https://github.com/carldaws/surface.nvim"
     }
   }
