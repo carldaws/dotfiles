@@ -5,15 +5,15 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mini.icons": {
-      "rev": "9e4c1645ce2b78afd6191b6be2c38bc0f998dd48",
+      "rev": "5d58117d176c133f4cb5585ec8cb3450881c89a0",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "mini.pick": {
-      "rev": "9368112b7cafb61d837bed55fc6f40e55df53fa0",
+      "rev": "fda834789d64858c15e2a875770b3fca17c3d10c",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
     "miser.nvim": {
-      "rev": "096c89879967564e4a348e182fa9703ee77b4efe",
+      "rev": "06761dd04e823ec6bcca65f00e5fb2595168fa77",
       "src": "https://github.com/carldaws/miser.nvim"
     },
     "nord.nvim": {
