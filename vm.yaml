@@ -39,6 +39,27 @@ provision:
     chsh -s /usr/bin/zsh "{{.User}}"
     loginctl enable-linger "{{.User}}"
 
+- mode: system
+  script: |
+    #!/bin/bash
+    set -eux -o pipefail
+    [ -f /swapfile ] && exit 0
+
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update
+    apt-get install -y zram-tools
+    printf 'ALGO=zstd\nPERCENT=50\nPRIORITY=100\n' >/etc/default/zramswap
+    systemctl restart zramswap
+
+    echo 'vm.swappiness=100' >/etc/sysctl.d/99-swap.conf
+    sysctl -p /etc/sysctl.d/99-swap.conf
+
+    fallocate -l 8G /swapfile
+    chmod 600 /swapfile
+    mkswap /swapfile
+    echo '/swapfile none swap sw,pri=1 0 0' >>/etc/fstab
+    swapon -a
+
 - mode: user
   script: |
     #!/bin/bash
